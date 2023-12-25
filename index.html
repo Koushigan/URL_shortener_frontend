@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            overflow: hidden; /* Prevent horizontal scrollbar */
+        }
+
+        .container-fluid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden; /* Prevent horizontal scrollbar */
+            position: relative;
+        }
+
+        .box {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .text-muted {
+            color: #6c757d;
+        }
+
+        small {
+            display: block;
+            margin-top: 10px;
+            color: #6c757d;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Fun background animation */
+        .fun-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #ff00ff, #00ff00, #0000ff, #ff00ff);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fun-bg"></div>
+    <div class="container-fluid">
+        <!-- Login form begin -->
+        <div class="row w-sm-50">
+            <div class="box" id="loginDiv">
+                <form onsubmit="login();return false;" id="loginForm" method="POST">
+                    <h1>Login</h1>
+                    <p class="text-muted"> Please enter your login id and password!</p>
+                    <input type="text" id="loginName" name="email" placeholder="Email" autocomplete="off" required>
+                    <input type="password" name="password" id="loginPassword" placeholder="Password" autocomplete="off" required>
+                    <input type="submit" name="submit" id="loginSubmit" class="btn btn-primary" value="Login">
+                    <div>
+                        <label class="text-muted">Don't have an account? <a href="#" onclick="signup()">Sign Up</a> </label>
+                    </div>
+                    <div style="color: gainsboro;">
+                        <small>Demo Credentials to login:</small>
+                        <small><strong> username:</strong> starlord@gmail.com</small>
+                        <small><strong>password:</strong> guardiansofthegalaxy</small>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Login Form End -->
+        <!-- Register form begin -->
+        <div class="row w-sm-50" id="registerDiv">
+            <div class="box" id="register">
+                <form onsubmit="register();return false;" id="signupForm" method="POST">
+                    <fieldset>
+                        <legend>
+                            <h2 class="text-light">SIGN UP</h2>
+                        </legend>
+                        <div class="form-group input-group">
+                            <i class="fa fa-user p-md-3"></i><input type="text" name="name" id="name" class="col-10" placeholder="Username" autocomplete="off" required>
+                        </div>
+                        <div class="form-group input-group">
+                            <i class="fa fa-envelope p-md-3"></i><input type="email" name="email" autocomplete="off" id="email" class="col-10" placeholder="E-mail" required>
+                        </div>
+                        <div class="form-group input-group">
+                            <i class="fa fa-phone p-md-3"></i><input type="tel" name="phone" id="phone" autocomplete="off" class="col-10" placeholder="Phone Number" required>
+                        </div>
+                        <div class="form-group input-group">
+                            <i class="fa fa-lock p-md-3"></i> <input type="password" name="password" id="password" autocomplete="off" class="col-10" placeholder="Password" required>
+                        </div>
+                        <div>
+                            <input type="submit" value="Sign Up" class="btn btn-success">
+                        </div>
+                        <label><a href="#" onclick="switchForm('loginDiv')">Back to Login</a> </label>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <!-- Register form end -->
+    </div>
+
+    <script src="login.js"></script>
+</body>
+
+</html>
